@@ -13,19 +13,19 @@ export default function ContactSection() {
         {
             Icon: IconMapPin, title: 'Address', color: brown,
             content: '2nd Floor, Mahagun Mart, Shop No. 1 & 2, Sector 78, Noida, Uttar Pradesh 201305',
-            link: 'https://maps.google.com/?q=Mahagun+Mart+Sector+78+Noida',
+            link: 'https://maps.app.goo.gl/P2KiGwHFBETMXHNu5',
             linkLabel: 'Get Directions', LinkIcon: IconNavigation,
         },
         {
             Icon: IconPhone, title: 'Call & Reserve', color: copper,
-            content: '+91 99999 99999',
-            link: 'tel:+919999999999',
+            content: '+91 99580 55600',
+            link: 'tel:+919958055600',
             linkLabel: 'Tap to Call', LinkIcon: IconPhone,
         },
         {
             Icon: IconWhatsApp, title: 'WhatsApp Us', color: '#25d366',
             content: 'Chat to book, ask questions, or check availability',
-            link: 'https://wa.me/919999999999?text=Hi! I want to reserve a table at The Pantry Car.',
+            link: 'https://wa.me/919958055600?text=Hi! I want to reserve a table at The Pantry Car.',
             linkLabel: 'Open WhatsApp', LinkIcon: IconWhatsApp,
         },
         {
@@ -62,7 +62,7 @@ export default function ContactSection() {
                     <div style={{ borderRadius: '12px', overflow: 'hidden', border: `1px solid ${brownBorder}`, boxShadow: '0 4px 20px rgba(107,66,38,0.08)' }}>
                         <iframe
                             title="The Pantry Car Location"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.5!2d77.39!3d28.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMahagun+Mart+Sector+78+Noida!5e0!3m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1!2d77.3867!3d28.5725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d4b6c7a3b1%3A0x0!2sSpize+Barbeque%2C+Mahagun+Mart%2C+Sector+78%2C+Noida!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin"
                             width="100%"
                             height={isMobile ? '260px' : '360px'}
                             style={{ border: 0, display: 'block' }}

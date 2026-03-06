@@ -11,7 +11,7 @@ export default function Footer() {
 
     const socials = [
         { Icon: IconFacebook, href: '#', label: 'Facebook' },
-        { Icon: IconInstagram, href: '#', label: 'Instagram' },
+        { Icon: IconInstagram, href: 'https://www.instagram.com/thepantrycarofficial/', label: 'Instagram' },
         { Icon: IconYoutube, href: '#', label: 'YouTube' },
     ];
 
@@ -25,8 +25,8 @@ export default function Footer() {
 
     const contactItems = [
         { Icon: IconMapPin, text: '2nd Floor, Mahagun Mart, Shop No. 1 & 2, Sector 78, Noida, UP 201305', href: null },
-        { Icon: IconPhone, text: '+91 99999 99999', href: 'tel:+919999999999' },
-        { Icon: IconWhatsApp, text: 'WhatsApp Us', href: 'https://wa.me/919999999999' },
+        { Icon: IconPhone, text: '+91 99580 55600', href: 'tel:+919958055600' },
+        { Icon: IconWhatsApp, text: 'WhatsApp Us', href: 'https://wa.me/919958055600' },
         { Icon: IconClock, text: '11 AM – 11 PM · Open Daily', href: null },
     ];
 
@@ -161,14 +161,14 @@ export default function Footer() {
                                 <IconCalendar size={16} color="#FFF8F0" /> Reserve Online
                             </button>
                             <a
-                                href="tel:+919999999999"
+                                href="tel:+919958055600"
                                 className="btn-outline"
                                 style={{ justifyContent: 'center', textAlign: 'center', gap: '8px' }}
                             >
                                 <IconPhone size={16} color={copperAccent} /> Call Now
                             </a>
                             <a
-                                href="https://wa.me/919999999999?text=Hi! I'd like to book a table at The Pantry Car."
+                                href="https://wa.me/919958055600?text=Hi! I'd like to book a table at The Pantry Car."
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{

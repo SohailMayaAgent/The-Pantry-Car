@@ -78,7 +78,7 @@ export default function OrderOnlineSection() {
                         </div>
 
                         <a
-                            href="tel:+919999999999"
+                            href="tel:+919958055600"
                             style={{
                                 display: 'inline-flex', alignItems: 'center', gap: '10px',
                                 background: brown, color: '#FFF8F0',
@@ -91,7 +91,7 @@ export default function OrderOnlineSection() {
                             onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'scale(1)'; }}
                         >
                             <IconPhone size={18} color="#FFF8F0" />
-                            <span>+91 99999 99999</span>
+                            <span>+91 99580 55600</span>
                         </a>
                     </div>
 
@@ -140,7 +140,7 @@ export default function OrderOnlineSection() {
                         </div>
 
                         <a
-                            href="https://wa.me/919999999999?text=Hi! I'd like to place an order from The Pantry Car."
+                            href="https://wa.me/919958055600?text=Hi! I'd like to place an order from The Pantry Car."
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{

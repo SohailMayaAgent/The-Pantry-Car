@@ -482,7 +482,7 @@ export default function Navbar() {
 
                             {/* Call Now */}
                             <a
-                                href="tel:+911234567890"
+                                href="tel:+919958055600"
                                 style={{
                                     display: 'flex',
                                     alignItems: 'center',

@@ -8,16 +8,16 @@ export const authService = {
      * @param {string} password
      */
     async login(email, password) {
-        const response = await api.post('/auth/login', { email, password });
-        return response.data; // { user, token }
+        // api.js interceptor already unwraps response.data, so `response` IS the data
+        return await api.post('/auth/login', { email, password }); // { user, token }
     },
 
     /**
      * Get current logged in user via token
      */
     async getMe() {
-        const response = await api.get('/auth/me');
-        return response.data; // { user }
+        // api.js interceptor already unwraps response.data, so the return is the data directly
+        return await api.get('/auth/me'); // { user }
     }
 };
 

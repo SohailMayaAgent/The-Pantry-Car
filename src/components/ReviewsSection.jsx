@@ -246,7 +246,7 @@ export default function ReviewsSection() {
                 {/* Bottom CTA */}
                 <div style={{ textAlign: 'center', marginTop: isMobile ? '40px' : '56px' }}>
                     <a
-                        href="https://g.page/r/thepantrycar"
+                        href="https://maps.app.goo.gl/wQYhVyAeEyjnFeVX7"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{

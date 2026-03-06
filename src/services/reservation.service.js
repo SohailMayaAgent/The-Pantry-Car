@@ -8,16 +8,16 @@ export const reservationService = {
      * @returns {Promise<{ reservationId, name, date, time, guests, status }>}
      */
     async create(formData) {
-        const response = await api.post('/reservations', formData);
-        return response.data;
+        // api.js interceptor already unwraps response.data
+        return await api.post('/reservations', formData);
     },
 
     /**
      * Look up a reservation by its public ID (e.g. RSV-A1B2C3).
      */
     async getById(reservationId) {
-        const response = await api.get(`/reservations/${reservationId}`);
-        return response.data;
+        // api.js interceptor already unwraps response.data
+        return await api.get(`/reservations/${reservationId}`);
     },
 };
 

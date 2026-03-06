@@ -64,7 +64,7 @@ export default function PublicSite() {
       {/* WhatsApp floating button */}
       <div style={{ position: 'fixed', right: '24px', bottom: '24px', zIndex: 900 }}>
         <a
-          href="https://wa.me/919999999999?text=Hi! I'd like to reserve a table at The Pantry Car, Sector 78 Noida."
+          href="https://wa.me/919958055600?text=Hi! I'd like to reserve a table at The Pantry Car, Sector 78 Noida."
           target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp"
           style={{
             display: 'flex', alignItems: 'center', justifyContent: 'center',

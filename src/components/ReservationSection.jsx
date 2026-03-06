@@ -109,7 +109,7 @@ export default function ReservationSection() {
                                 </p>
                                 <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
                                     <a
-                                        href={`https://wa.me/919999999999?text=Hi! I just reserved a table at The Pantry Car. ID: ${reservation.reservationId}. Name: ${form.name}, Date: ${reservation.date}, Time: ${reservation.time}, Guests: ${reservation.guests}.`}
+                                        href={`https://wa.me/919958055600?text=Hi! I just reserved a table at The Pantry Car. ID: ${reservation.reservationId}. Name: ${form.name}, Date: ${reservation.date}, Time: ${reservation.time}, Guests: ${reservation.guests}.`}
                                         target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ gap: '8px' }}
                                     >
                                         <IconWhatsApp size={18} color="#fff" /><span>Confirm via WhatsApp</span>
@@ -270,7 +270,7 @@ export default function ReservationSection() {
 
                                 <div style={{ display: 'flex', gap: '10px', marginTop: '12px', flexWrap: 'wrap' }}>
                                     <a
-                                        href="tel:+919999999999"
+                                        href="tel:+919958055600"
                                         style={{
                                             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
                                             background: 'rgba(107,66,38,0.06)', border: `1px solid ${brownBorder}`,
@@ -281,7 +281,7 @@ export default function ReservationSection() {
                                         <IconPhone size={16} color={brown} /> Call to Book
                                     </a>
                                     <a
-                                        href="https://wa.me/919999999999?text=Hi! I'd like to reserve a table at The Pantry Car."
+                                        href="https://wa.me/919958055600?text=Hi! I'd like to reserve a table at The Pantry Car."
                                         target="_blank" rel="noopener noreferrer"
                                         style={{
                                             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
