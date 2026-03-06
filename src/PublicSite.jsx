@@ -30,7 +30,7 @@ export default function PublicSite() {
 
   return (
     <div style={{ background: '#FFF8F0', minHeight: '100vh' }}>
-      <Navbar />
+      {/* Navbar is embedded inside HeroSection's white card */}
       <HeroSection />
       <AboutSection />
       <MenuSection />
