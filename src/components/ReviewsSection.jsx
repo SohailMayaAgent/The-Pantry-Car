@@ -12,11 +12,13 @@ const reviews = [
 
 function StarRating({ count, total = 5 }) {
     return (
-        <div style={{ display: 'flex', gap: '2px' }}>
+        <div style={{ display: 'flex', gap: '3px' }}>
             {Array.from({ length: total }).map((_, i) =>
                 i < count
-                    ? <IconStar key={i} size={14} color="#ffd700" />
-                    : <IconStarOutline key={i} size={14} color="#ffd700" />
+                    ? <span key={i} style={{ display: 'inline-flex', filter: 'drop-shadow(0 0 4px rgba(255,215,0,0.7))' }}>
+                        <IconStar size={15} color="#ffd700" />
+                    </span>
+                    : <IconStarOutline key={i} size={15} color="rgba(215,180,80,0.4)" />
             )}
         </div>
     );
@@ -154,28 +156,40 @@ export default function ReviewsSection() {
                     gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
                     gap: isMobile ? '14px' : '20px',
                 }}>
-                    {reviews.map((r) => (
+                    {reviews.map((r, idx) => (
                         <div
                             key={r.name}
                             style={{
                                 background: '#fff',
-                                border: '1.5px solid rgba(107,66,38,0.18)',
-                                borderRadius: '14px',
-                                padding: isMobile ? '20px 18px' : '28px',
+                                border: '1.5px solid rgba(107,66,38,0.14)',
+                                borderRadius: '16px',
+                                padding: isMobile ? '22px 18px' : '30px',
                                 transition: 'all 0.3s ease',
                                 boxShadow: '0 2px 12px rgba(107,66,38,0.06)',
+                                position: 'relative',
+                                overflow: 'hidden',
+                                animation: 'reveal-up 0.6s ease both',
+                                animationDelay: `${idx * 0.1}s`,
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = 'rgba(184,134,11,0.5)';
-                                e.currentTarget.style.transform = 'translateY(-4px)';
-                                e.currentTarget.style.boxShadow = '0 8px 28px rgba(107,66,38,0.14)';
+                                e.currentTarget.style.borderColor = 'rgba(184,134,11,0.4)';
+                                e.currentTarget.style.transform = 'translateY(-5px)';
+                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(107,66,38,0.14)';
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = 'rgba(107,66,38,0.18)';
+                                e.currentTarget.style.borderColor = 'rgba(107,66,38,0.14)';
                                 e.currentTarget.style.transform = 'translateY(0)';
                                 e.currentTarget.style.boxShadow = '0 2px 12px rgba(107,66,38,0.06)';
                             }}
                         >
+                            {/* Decorative large quote mark */}
+                            <div style={{
+                                position: 'absolute', top: '8px', right: '14px',
+                                fontSize: '80px', lineHeight: 1,
+                                fontFamily: 'Georgia, serif', fontWeight: 700,
+                                color: 'rgba(184,134,11,0.07)',
+                                pointerEvents: 'none', userSelect: 'none',
+                            }}>&ldquo;</div>
                             {/* Card header: avatar + name + date */}
                             <div style={{
                                 display: 'flex',
@@ -249,33 +263,17 @@ export default function ReviewsSection() {
                         href="https://maps.app.goo.gl/wQYhVyAeEyjnFeVX7"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="btn-primary"
                         style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '8px',
-                            background: '#6B4226',
-                            color: '#fff',
-                            border: '2px solid #6B4226',
-                            borderRadius: '8px',
-                            padding: isMobile ? '12px 24px' : '14px 32px',
-                            fontWeight: 700,
-                            fontSize: isMobile ? '14px' : '15px',
-                            textDecoration: 'none',
-                            letterSpacing: '0.3px',
-                            transition: 'all 0.3s ease',
-                            cursor: 'pointer',
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#B8860B';
-                            e.currentTarget.style.borderColor = '#B8860B';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.background = '#6B4226';
-                            e.currentTarget.style.borderColor = '#6B4226';
+                            background: 'linear-gradient(135deg, #B8860B 0%, #D4A039 50%, #B8860B 100%)',
+                            backgroundSize: '200% auto',
+                            animation: 'shimmer 3s linear infinite',
+                            borderRadius: '10px',
+                            padding: isMobile ? '14px 28px' : '15px 36px',
+                            boxShadow: '0 6px 24px rgba(184,134,11,0.35)',
                         }}
                     >
-                        <IconStar size={16} color="#ffd700" />
+                        <IconStar size={16} color="#fff" />
                         <span>Read All Reviews on Google</span>
                         <IconExternalLink size={16} color="#fff" />
                     </a>

@@ -91,11 +91,30 @@ export default function HeroSection() {
             <section id="home" ref={heroRef} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
                 <div style={{
                     position: 'absolute', inset: 0,
-                    backgroundImage: 'url(/hero_bbq.png)', backgroundSize: 'cover', backgroundPosition: 'center',
+                    backgroundImage: 'url(/hero_bbq.webp)', backgroundSize: 'cover', backgroundPosition: 'center',
                     transform: isMobile ? 'none' : `translateY(${scrollY * 0.3}px)`, willChange: 'transform',
                 }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(61,43,31,0.92) 0%, rgba(74,46,24,0.7) 50%, rgba(61,43,31,0.88) 100%)' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 70% 50%, rgba(184,134,11,0.08), transparent 60%)' }} />
+                {/* Rich multi-layer overlay */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(165deg, rgba(22,12,5,0.97) 0%, rgba(42,25,12,0.82) 45%, rgba(22,12,5,0.95) 100%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 65% 45%, rgba(184,134,11,0.1), transparent 58%)' }} />
+                {/* Ember particle dots */}
+                {!isMobile && [
+                    { left: '8%', bottom: '30%', delay: '0s', size: 5 },
+                    { left: '18%', bottom: '55%', delay: '1.2s', size: 3 },
+                    { left: '72%', bottom: '25%', delay: '0.6s', size: 4 },
+                    { left: '82%', bottom: '48%', delay: '1.8s', size: 3 },
+                    { left: '55%', bottom: '20%', delay: '2.4s', size: 5 },
+                    { left: '36%', bottom: '62%', delay: '0.9s', size: 3 },
+                ].map((e, i) => (
+                    <div key={i} style={{
+                        position: 'absolute', left: e.left, bottom: e.bottom,
+                        width: e.size, height: e.size, borderRadius: '50%',
+                        background: 'radial-gradient(circle, #D4A039 0%, #B8860B 60%, transparent 100%)',
+                        animation: `ember-float 4s ease-in-out infinite`,
+                        animationDelay: e.delay,
+                        pointerEvents: 'none', zIndex: 1,
+                    }} />
+                ))}
 
                 <div style={{
                     maxWidth: '1280px', margin: '0 auto',
@@ -179,13 +198,19 @@ export default function HeroSection() {
                             animation: 'fade-in-up 1s ease 0.9s both',
                         }}>
                             {stats.map((stat) => (
-                                <div key={stat.label} style={{ textAlign: isMobile ? 'center' : 'left' }}>
+                                <div key={stat.label} style={{
+                                    textAlign: isMobile ? 'center' : 'left',
+                                    padding: '0 0 12px 0',
+                                    borderBottom: '2px solid transparent',
+                                    background: 'linear-gradient(to right, rgba(212,160,57,0.5), transparent) bottom / 100% 2px no-repeat',
+                                    backgroundClip: 'padding-box',
+                                }}>
                                     <div style={{
                                         fontFamily: 'Playfair Display, serif',
                                         fontSize: isMobile ? '24px' : '30px', fontWeight: 700,
                                         color: '#D4A039',
                                     }}>{stat.value}</div>
-                                    <div style={{ color: '#B0A090', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase' }}>{stat.label}</div>
+                                    <div style={{ color: '#B0A090', fontSize: '11px', letterSpacing: '1px', textTransform: 'uppercase', marginTop: '2px' }}>{stat.label}</div>
                                 </div>
                             ))}
                         </div>

@@ -36,7 +36,17 @@ export default function Footer() {
     const copperBorder = 'rgba(184,134,11,0.25)';
 
     return (
-        <footer style={{ background: '#3D2B1F', borderTop: `1px solid ${copperBorder}`, paddingTop: isMobile ? '48px' : '64px' }}>
+        <footer style={{
+            background: '#3D2B1F',
+            position: 'relative',
+            paddingTop: isMobile ? '48px' : '64px',
+        }}>
+            {/* Vivid copper gradient top border */}
+            <div style={{
+                position: 'absolute', top: 0, left: 0, right: 0,
+                height: '3px',
+                background: 'linear-gradient(90deg, transparent, #B8860B 20%, #D4A039 50%, #B8860B 80%, transparent)',
+            }} />
             <div style={{ maxWidth: '1280px', margin: '0 auto', padding: isMobile ? '0 16px' : '0 24px' }}>
                 <div style={{
                     display: 'grid',
@@ -74,22 +84,38 @@ export default function Footer() {
                         <p style={{ color: mutedText, fontSize: '13px', lineHeight: 1.7, marginBottom: '16px' }}>
                             A warm, women-owned dining destination in Sector 78 Noida. Rebranded from Railicious  now serving heartfelt food in a cozy, welcoming space.
                         </p>
-                        <div style={{ display: 'flex', gap: '10px' }}>
+                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                             {socials.map(({ Icon, href, label }) => (
                                 <a
                                     key={label}
                                     href={href}
+                                    target={href !== '#' ? '_blank' : undefined}
+                                    rel="noopener noreferrer"
                                     aria-label={label}
                                     style={{
-                                        width: '38px', height: '38px',
-                                        background: copperFaint,
-                                        border: `1px solid ${copperBorder}`,
-                                        borderRadius: '8px',
+                                        width: '42px', height: '42px',
+                                        background: 'transparent',
+                                        border: `1.5px solid ${copperBorder}`,
+                                        borderRadius: '50%',
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        textDecoration: 'none', transition: 'all 0.2s ease',
+                                        textDecoration: 'none',
+                                        transition: 'all 0.25s ease',
+                                        flexShrink: 0,
                                     }}
-                                    onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(184,134,11,0.32)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                                    onMouseLeave={(e) => { e.currentTarget.style.background = copperFaint; e.currentTarget.style.transform = 'translateY(0)'; }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = copperAccent;
+                                        e.currentTarget.style.borderColor = copperAccent;
+                                        e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
+                                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(184,134,11,0.4)';
+                                        e.currentTarget.querySelector('svg').setAttribute('stroke', '#fff');
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = 'transparent';
+                                        e.currentTarget.style.borderColor = copperBorder;
+                                        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                        e.currentTarget.querySelector('svg').setAttribute('stroke', copperAccent);
+                                    }}
                                 >
                                     <Icon size={18} color={copperAccent} />
                                 </a>

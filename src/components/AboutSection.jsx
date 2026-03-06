@@ -41,13 +41,20 @@ export default function AboutSection() {
                     top: '50%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: '600px',
-                    height: '600px',
+                    width: '800px',
+                    height: '800px',
                     borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(184,134,11,0.06) 0%, transparent 70%)',
+                    background: 'radial-gradient(circle, rgba(184,134,11,0.07) 0%, transparent 65%)',
                     pointerEvents: 'none',
                 }}
             />
+            {/* top-left accent blob */}
+            <div style={{
+                position: 'absolute', top: '-60px', left: '-60px',
+                width: '300px', height: '300px', borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(107,66,38,0.05) 0%, transparent 70%)',
+                pointerEvents: 'none'
+            }} />
 
             <div
                 style={{
@@ -79,8 +86,10 @@ export default function AboutSection() {
                             }}
                         >
                             <img
-                                src="/lounge_bar.png"
+                                src="/lounge_bar.webp"
                                 alt="The Pantry Car  Lounge & Bar"
+                                loading="lazy"
+                                decoding="async"
                                 style={{
                                     width: '100%',
                                     height: isMobile ? '280px' : '440px',
@@ -152,10 +161,25 @@ export default function AboutSection() {
                                 left: '-14px',
                                 width: '56px',
                                 height: '56px',
-                                border: '3px solid rgba(107, 66, 38, 0.35)',
+                                border: '3px solid rgba(184, 134, 11, 0.5)',
                                 borderRight: 'none',
                                 borderBottom: 'none',
                                 borderRadius: '10px 0 0 0',
+                                pointerEvents: 'none',
+                            }}
+                        />
+                        {/* bottom-right accent */}
+                        <div
+                            style={{
+                                position: 'absolute',
+                                bottom: '-14px',
+                                right: isMobile ? '-8px' : '-14px',
+                                width: '40px',
+                                height: '40px',
+                                border: '2px solid rgba(184, 134, 11, 0.3)',
+                                borderLeft: 'none',
+                                borderTop: 'none',
+                                borderRadius: '0 0 8px 0',
                                 pointerEvents: 'none',
                             }}
                         />
@@ -325,10 +349,9 @@ export default function AboutSection() {
                         gap: isMobile ? '12px' : '16px',
                     }}
                 >
-                    {features.map(({ icon: FeatureIcon, title, desc }) => (
+                    {features.map(({ icon: FeatureIcon, title, desc }, idx) => (
                         <div
                             key={title}
-                            className="glass-card"
                             style={{
                                 padding: isMobile ? '20px 14px' : '28px 20px',
                                 borderRadius: '14px',
@@ -336,65 +359,63 @@ export default function AboutSection() {
                                 background: '#FFFFFF',
                                 border: '1.5px solid rgba(107, 66, 38, 0.12)',
                                 boxShadow: '0 2px 12px rgba(107, 66, 38, 0.06)',
-                                transition: 'all 0.28s ease',
+                                transition: 'all 0.3s ease',
                                 cursor: 'default',
+                                animation: `reveal-up 0.6s ease both`,
+                                animationDelay: `${idx * 0.08}s`,
+                                position: 'relative',
+                                overflow: 'hidden',
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = 'rgba(107, 66, 38, 0.35)';
-                                e.currentTarget.style.transform = 'translateY(-6px)';
-                                e.currentTarget.style.boxShadow =
-                                    '0 16px 40px rgba(107, 66, 38, 0.13)';
+                                e.currentTarget.style.borderColor = 'rgba(184,134,11,0.5)';
+                                e.currentTarget.style.transform = 'translateY(-7px)';
+                                e.currentTarget.style.boxShadow = '0 20px 48px rgba(107, 66, 38, 0.15)';
+                                e.currentTarget.querySelector('.feat-top-border').style.opacity = '1';
+                                e.currentTarget.querySelector('.feat-icon-circle').style.background = 'linear-gradient(135deg, rgba(184,134,11,0.18), rgba(184,134,11,0.08))';
+                                e.currentTarget.querySelector('.feat-icon-circle').style.borderColor = 'rgba(184,134,11,0.4)';
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.style.borderColor = 'rgba(107, 66, 38, 0.12)';
                                 e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow =
-                                    '0 2px 12px rgba(107, 66, 38, 0.06)';
+                                e.currentTarget.style.boxShadow = '0 2px 12px rgba(107, 66, 38, 0.06)';
+                                e.currentTarget.querySelector('.feat-top-border').style.opacity = '0';
+                                e.currentTarget.querySelector('.feat-icon-circle').style.background = 'rgba(107, 66, 38, 0.08)';
+                                e.currentTarget.querySelector('.feat-icon-circle').style.borderColor = 'rgba(107, 66, 38, 0.18)';
                             }}
                         >
+                            {/* Copper top-border accent on hover */}
+                            <div className="feat-top-border" style={{
+                                position: 'absolute', top: 0, left: 0, right: 0,
+                                height: '3px',
+                                background: 'linear-gradient(90deg, #B8860B, #D4A039, #B8860B)',
+                                opacity: 0,
+                                transition: 'opacity 0.3s ease',
+                            }} />
+
                             {/* Icon circle */}
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    justifyContent: 'center',
-                                    marginBottom: '12px',
-                                }}
-                            >
+                            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '12px' }}>
                                 <div
+                                    className="feat-icon-circle"
                                     style={{
-                                        width: '52px',
-                                        height: '52px',
-                                        borderRadius: '50%',
+                                        width: '52px', height: '52px', borderRadius: '50%',
                                         background: 'rgba(107, 66, 38, 0.08)',
                                         border: '1.5px solid rgba(107, 66, 38, 0.18)',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        transition: 'all 0.3s ease',
                                     }}
                                 >
                                     <FeatureIcon size={24} color="#6B4226" />
                                 </div>
                             </div>
 
-                            <h3
-                                style={{
-                                    fontFamily: 'Playfair Display, serif',
-                                    fontSize: isMobile ? '14px' : '16px',
-                                    color: '#3D2B1F',
-                                    marginBottom: '6px',
-                                    fontWeight: 700,
-                                    lineHeight: 1.3,
-                                }}
-                            >
+                            <h3 style={{
+                                fontFamily: 'Playfair Display, serif',
+                                fontSize: isMobile ? '14px' : '16px',
+                                color: '#3D2B1F', marginBottom: '6px', fontWeight: 700, lineHeight: 1.3,
+                            }}>
                                 {title}
                             </h3>
-                            <p
-                                style={{
-                                    color: '#9A8478',
-                                    fontSize: '12px',
-                                    lineHeight: 1.55,
-                                }}
-                            >
+                            <p style={{ color: '#9A8478', fontSize: '12px', lineHeight: 1.55 }}>
                                 {desc}
                             </p>
                         </div>

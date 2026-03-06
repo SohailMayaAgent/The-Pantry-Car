@@ -3,12 +3,12 @@ import useWindowSize from '../hooks/useWindowSize';
 import { IconX } from './Icons';
 
 const galleryItems = [
-    { id: 1, src: '/hero_bbq.png', category: 'Ambience', label: 'Warm & Cozy Ambience', wide: true },
-    { id: 2, src: '/lounge_bar.png', category: 'Ambience', label: 'The Bar Corner', wide: false },
-    { id: 3, src: '/buffet_spread.png', category: 'Food', label: 'Signature Spread', wide: false },
-    { id: 4, src: '/drinks_bar.png', category: 'Coffee', label: 'Artisan Coffee', wide: false },
-    { id: 5, src: '/live_music.png', category: 'Seating', label: 'Comfortable Seating', wide: true },
-    { id: 6, src: '/birthday_party.png', category: 'Food', label: "Chef's Creations", wide: false },
+    { id: 1, src: '/hero_bbq.webp', category: 'Ambience', label: 'Warm & Cozy Ambience', wide: true },
+    { id: 2, src: '/lounge_bar.webp', category: 'Ambience', label: 'The Bar Corner', wide: false },
+    { id: 3, src: '/buffet_spread.webp', category: 'Food', label: 'Signature Spread', wide: false },
+    { id: 4, src: '/drinks_bar.webp', category: 'Coffee', label: 'Artisan Coffee', wide: false },
+    { id: 5, src: '/live_music.webp', category: 'Seating', label: 'Comfortable Seating', wide: true },
+    { id: 6, src: '/birthday_party.webp', category: 'Food', label: "Chef's Creations", wide: false },
 ];
 
 const categories = ['All', 'Ambience', 'Food', 'Coffee', 'Seating'];
