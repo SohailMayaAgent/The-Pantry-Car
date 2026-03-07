@@ -213,7 +213,7 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* Center Nav — desktop only */}
+                        {/* Center Nav  desktop only */}
                         {isDesktop && (
                             <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
                                 {[['About Us', '#about'], ['Menu', '#menu'], ['Reviews', '#reviews'], ['Contact', '#contact']].map(([label, href]) => (
@@ -306,7 +306,7 @@ export default function HeroSection() {
                                 lineHeight: 1.75, marginBottom: '28px',
                                 maxWidth: '420px',
                             }}>
-                                Where authentic taste meets modern dining — experience freshness, tradition, and a touch of luxury in every meal at Mahagun Mart, Sector 78.
+                                Where authentic taste meets modern dining  experience freshness, tradition, and a touch of luxury in every meal at Mahagun Mart, Sector 78.
                             </p>
 
                             {/* CTA Buttons */}
@@ -545,7 +545,7 @@ export default function HeroSection() {
                             </div>
                         )}
 
-                        {/* Stats bar — desktop full width at bottom of card */}
+                        {/* Stats bar  desktop full width at bottom of card */}
                         {isDesktop && (
                             <div style={{
                                 gridColumn: '1 / -1',
