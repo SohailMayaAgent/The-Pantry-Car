@@ -62,7 +62,7 @@ export default function ContactSection() {
                     <div style={{ borderRadius: '12px', overflow: 'hidden', border: `1px solid ${brownBorder}`, boxShadow: '0 4px 20px rgba(107,66,38,0.08)' }}>
                         <iframe
                             title="The Pantry Car Location"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1!2d77.3867!3d28.5725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5d4b6c7a3b1%3A0x0!2sSpize+Barbeque%2C+Mahagun+Mart%2C+Sector+78%2C+Noida!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.189905861508!2d77.38756479999999!3d28.564059599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef48b1d8dc5f%3A0x90fab00403fdbaca!2sThe%20Pantry%20Car!5e0!3m2!1sen!2sin!4v1772898435677!5m2!1sen!2sin"
                             width="100%"
                             height={isMobile ? '260px' : '360px'}
                             style={{ border: 0, display: 'block' }}
