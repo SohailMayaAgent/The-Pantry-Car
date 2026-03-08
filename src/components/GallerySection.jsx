@@ -2,6 +2,15 @@ import { useState } from 'react';
 import useWindowSize from '../hooks/useWindowSize';
 import { IconX } from './Icons';
 
+// Railway-themed colors
+const COPPER = '#B87333';
+const COPPER_LIGHT = '#CD853F';
+const BURGUNDY = '#800020';
+const GOLD = '#D4AF37';
+const CREAM = '#FFF8F0';
+const TEXT = '#FFF8F0';
+const BG_DARK = '#1A1209';
+
 const galleryItems = [
     { id: 1, src: '/hero_bbq.webp', category: 'Ambience', label: 'Warm & Cozy Ambience', wide: true },
     { id: 2, src: '/lounge_bar.webp', category: 'Ambience', label: 'The Bar Corner', wide: false },
@@ -13,10 +22,6 @@ const galleryItems = [
 
 const categories = ['All', 'Ambience', 'Food', 'Coffee', 'Seating'];
 
-const brown = '#6B4226';
-const copper = '#B8860B';
-const beige = '#F5E6D3';
-
 export default function GallerySection() {
     const [activeFilter, setActiveFilter] = useState('All');
     const [lightbox, setLightbox] = useState(null);
@@ -25,16 +30,60 @@ export default function GallerySection() {
     const filtered = galleryItems.filter(i => activeFilter === 'All' || i.category === activeFilter);
 
     return (
-        <section id="gallery" style={{ padding: isMobile ? '64px 0' : '100px 0', background: beige, position: 'relative' }}>
-            <div style={{ maxWidth: '1280px', margin: '0 auto', padding: isMobile ? '0 16px' : '0 24px' }}>
+        <section
+            id="gallery"
+            style={{
+                padding: isMobile ? '64px 0' : '100px 0',
+                background: `linear-gradient(180deg, ${BURGUNDY} 0%, #2A2018 100%)`,
+                position: 'relative',
+            }}
+        >
+            {/* Railway track pattern */}
+            <div style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: `
+                    linear-gradient(90deg, transparent 48%, rgba(184, 115, 51, 0.03) 48%, rgba(184, 115, 51, 0.03) 52%, transparent 52%)
+                `,
+                backgroundSize: '80px 30px',
+                pointerEvents: 'none',
+            }} />
+
+            <div style={{ maxWidth: '1280px', margin: '0 auto', padding: isMobile ? '0 16px' : '0 24px', position: 'relative', zIndex: 1 }}>
                 {/* Header */}
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? '36px' : '56px' }}>
-                    <div className="section-subtitle">Photo Gallery</div>
-                    <h2 className="section-title" style={{ color: brown, fontSize: isMobile ? '1.8rem' : undefined }}>
+                    <div style={{
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        background: 'rgba(212, 175, 55, 0.1)',
+                        borderRadius: '40px', padding: '5px 16px', marginBottom: '16px',
+                    }}>
+                        <span style={{ fontSize: '18px' }}>📷</span>
+                        <span style={{
+                            fontSize: '11px', fontWeight: 700, letterSpacing: '3px',
+                            color: GOLD, textTransform: 'uppercase',
+                        }}>
+                            गैलरी
+                        </span>
+                    </div>
+
+                    <h2 style={{
+                        fontFamily: 'Playfair Display, Georgia, serif',
+                        fontSize: isMobile ? '1.8rem' : '2.5rem',
+                        fontWeight: 700,
+                        color: TEXT,
+                        marginBottom: '12px',
+                    }}>
                         Inside{' '}
-                        <span style={{ color: copper }}>The Pantry Car</span>
+                        <span style={{ color: GOLD }}>The Pantry Car</span>
                     </h2>
-                    <div className="divider-copper" style={{ width: '60px', margin: '16px auto 0' }} />
+
+                    {/* Railway divider */}
+                    <div style={{
+                        width: '80px', height: '4px',
+                        background: `repeating-linear-gradient(90deg, #4A4A4A 0px, #4A4A4A 15px, transparent 15px, transparent 20px)`,
+                        borderTop: `1px solid ${GOLD}`,
+                        borderBottom: `1px solid ${GOLD}`,
+                        margin: '0 auto',
+                    }} />
                 </div>
 
                 {/* Filters */}
@@ -54,10 +103,26 @@ export default function GallerySection() {
                                     borderRadius: '40px', fontWeight: 600,
                                     fontSize: isMobile ? '12px' : '13px',
                                     cursor: 'pointer', transition: 'all 0.3s ease', whiteSpace: 'nowrap',
-                                    background: activeFilter === cat ? brown : '#fff',
-                                    color: activeFilter === cat ? '#FFF8F0' : 'rgba(107,66,38,0.6)',
-                                    border: activeFilter === cat ? 'none' : '1px solid rgba(107,66,38,0.2)',
-                                    boxShadow: activeFilter === cat ? '0 4px 16px rgba(107,66,38,0.25)' : 'none',
+                                    background: activeFilter === cat
+                                        ? `linear-gradient(135deg, ${BURGUNDY} 0%, ${COPPER} 100%)`
+                                        : 'rgba(255,248,240,0.05)',
+                                    color: activeFilter === cat ? CREAM : 'rgba(255,248,240,0.7)',
+                                    border: activeFilter === cat ? `2px solid ${GOLD}` : '1px solid rgba(212, 175, 55, 0.3)',
+                                    boxShadow: activeFilter === cat
+                                        ? `0 4px 16px rgba(184,115,51,0.3)`
+                                        : 'none',
+                                }}
+                                onMouseEnter={(e) => {
+                                    if (activeFilter !== cat) {
+                                        e.currentTarget.style.borderColor = GOLD;
+                                        e.currentTarget.style.background = 'rgba(255,248,240,0.08)';
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (activeFilter !== cat) {
+                                        e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.3)';
+                                        e.currentTarget.style.background = 'rgba(255,248,240,0.05)';
+                                    }
                                 }}
                             >
                                 {cat}
@@ -70,7 +135,7 @@ export default function GallerySection() {
                 <div style={{
                     display: 'grid',
                     gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-                    gap: isMobile ? '8px' : '12px',
+                    gap: isMobile ? '10px' : '16px',
                     gridAutoRows: isMobile ? '160px' : '240px',
                 }}>
                     {filtered.map((item) => (
@@ -79,21 +144,24 @@ export default function GallerySection() {
                             onClick={() => setLightbox(item)}
                             style={{
                                 position: 'relative', overflow: 'hidden',
-                                borderRadius: isMobile ? '8px' : '10px',
+                                borderRadius: isMobile ? '10px' : '14px',
                                 cursor: 'pointer',
-                                border: '1px solid rgba(107,66,38,0.12)',
+                                border: `2px solid ${COPPER}`,
                                 gridColumn: (!isMobile && item.wide) ? 'span 2' : 'span 1',
-                                transition: 'box-shadow 0.3s ease',
+                                transition: 'all 0.3s ease',
+                                boxShadow: `0 4px 16px rgba(184,115,51,0.2)`,
                             }}
                             onMouseEnter={(e) => {
                                 e.currentTarget.querySelector('img').style.transform = 'scale(1.08)';
                                 e.currentTarget.querySelector('.gallery-overlay').style.opacity = '1';
-                                e.currentTarget.style.boxShadow = '0 8px 24px rgba(107,66,38,0.2)';
+                                e.currentTarget.style.borderColor = GOLD;
+                                e.currentTarget.style.boxShadow = `0 8px 30px rgba(212,175,55,0.4)`;
                             }}
                             onMouseLeave={(e) => {
                                 e.currentTarget.querySelector('img').style.transform = 'scale(1)';
                                 e.currentTarget.querySelector('.gallery-overlay').style.opacity = '0';
-                                e.currentTarget.style.boxShadow = 'none';
+                                e.currentTarget.style.borderColor = COPPER;
+                                e.currentTarget.style.boxShadow = `0 4px 16px rgba(184,115,51,0.2)`;
                             }}
                         >
                             <img
@@ -106,21 +174,24 @@ export default function GallerySection() {
                                 style={{
                                     position: 'absolute', inset: 0, opacity: 0,
                                     transition: 'opacity 0.3s ease',
-                                    background: 'linear-gradient(0deg, rgba(61,43,31,0.82) 0%, transparent 55%)',
+                                    background: 'linear-gradient(0deg, rgba(42,29,20,0.9) 0%, transparent 60%)',
                                     display: 'flex', flexDirection: 'column',
                                     justifyContent: 'flex-end', padding: '16px',
                                 }}
                             >
-                                <div style={{ color: copper, fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '3px' }}>
+                                <div style={{ color: GOLD, fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '3px' }}>
                                     {item.category}
                                 </div>
-                                <div style={{ color: '#FFF8F0', fontSize: '14px', fontWeight: 600 }}>{item.label}</div>
+                                <div style={{ color: CREAM, fontSize: '14px', fontWeight: 600 }}>{item.label}</div>
                             </div>
+                            {/* Category badge */}
                             <div style={{
-                                position: 'absolute', top: '10px', right: '10px',
-                                background: 'rgba(61,43,31,0.65)', color: copper,
-                                fontSize: '10px', fontWeight: 700, padding: '3px 8px',
+                                position: 'absolute', top: '12px', right: '12px',
+                                background: `linear-gradient(135deg, ${BURGUNDY}, ${COPPER})`,
+                                color: CREAM,
+                                fontSize: '10px', fontWeight: 700, padding: '4px 10px',
                                 borderRadius: '20px', textTransform: 'uppercase',
+                                border: `1px solid ${GOLD}`,
                             }}>
                                 {item.category}
                             </div>
@@ -135,7 +206,7 @@ export default function GallerySection() {
                     onClick={() => setLightbox(null)}
                     style={{
                         position: 'fixed', inset: 0,
-                        background: 'rgba(61,43,31,0.92)',
+                        background: 'rgba(26,18,9,0.96)',
                         zIndex: 9999,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         padding: isMobile ? '16px' : '32px',
@@ -150,34 +221,45 @@ export default function GallerySection() {
                             onClick={() => setLightbox(null)}
                             style={{
                                 position: 'absolute',
-                                top: isMobile ? '8px' : '-44px',
+                                top: isMobile ? '8px' : '-48px',
                                 right: isMobile ? '8px' : '0px',
                                 background: 'rgba(255,248,240,0.12)',
-                                border: '1px solid rgba(255,248,240,0.2)',
+                                border: `2px solid ${GOLD}`,
                                 borderRadius: '50%',
-                                width: '40px', height: '40px',
+                                width: '44px', height: '44px',
                                 cursor: 'pointer',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                                 zIndex: 1,
-                                transition: 'background 0.2s',
+                                transition: 'all 0.2s',
                             }}
-                            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,248,240,0.22)'; }}
-                            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,248,240,0.12)'; }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.background = `linear-gradient(135deg, ${BURGUNDY}, ${COPPER})`;
+                                e.currentTarget.style.transform = 'scale(1.1)';
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(255,248,240,0.12)';
+                                e.currentTarget.style.transform = 'scale(1)';
+                            }}
                         >
-                            <IconX size={20} color="#FFF8F0" />
+                            <IconX size={22} color={CREAM} />
                         </button>
                         <img
                             src={lightbox.src}
                             alt={lightbox.label}
                             style={{
-                                width: '100%', borderRadius: '10px', display: 'block',
+                                width: '100%', borderRadius: '12px', display: 'block',
                                 maxHeight: '80vh', objectFit: 'contain',
-                                border: '1px solid rgba(255,248,240,0.1)',
+                                border: `2px solid ${GOLD}`,
+                                boxShadow: `0 8px 40px rgba(184,115,51,0.3)`,
                             }}
                         />
-                        <div style={{ marginTop: '14px', textAlign: 'center' }}>
-                            <div style={{ color: '#FFF8F0', fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>{lightbox.label}</div>
-                            <div style={{ color: copper, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '1px' }}>{lightbox.category}</div>
+                        <div style={{ marginTop: '16px', textAlign: 'center' }}>
+                            <div style={{ color: CREAM, fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>
+                                {lightbox.label}
+                            </div>
+                            <div style={{ color: GOLD, fontSize: '13px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                                {lightbox.category}
+                            </div>
                         </div>
                     </div>
                 </div>

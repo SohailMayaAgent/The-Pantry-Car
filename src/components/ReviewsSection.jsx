@@ -1,6 +1,16 @@
 import useWindowSize from '../hooks/useWindowSize';
 import { IconStar, IconStarOutline, IconExternalLink } from './Icons';
 
+// Railway-themed colors
+const COPPER = '#B87333';
+const COPPER_LIGHT = '#CD853F';
+const BURGUNDY = '#800020';
+const GOLD = '#D4AF37';
+const CREAM = '#FFF8F0';
+const TEXT = '#FFF8F0';
+const TEXT_DARK = '#3D2B1F';
+const BG_DARK = '#1A1209';
+
 const reviews = [
     { name: 'Neha Sharma', initials: 'NS', date: 'February 2025', stars: 5, text: 'Loved the food and the vibe! The Pantry Car has such a welcoming atmosphere. The paneer tikka was incredible and the coffee is hands down the best in Sector 78.', color: '#9b59b6' },
     { name: 'Arjun Kapoor', initials: 'AK', date: 'January 2025', stars: 5, text: 'Clean space, friendly staff, and an absolutely welcoming atmosphere. The rebranding from Railicious has been fantastic. Everything feels fresh and premium now.', color: '#3498db' },
@@ -32,16 +42,18 @@ export default function ReviewsSection() {
             id="reviews"
             style={{
                 padding: isMobile ? '64px 0' : '100px 0',
-                background: '#FFF8F0',
+                background: `linear-gradient(135deg, ${BG_DARK} 0%, #2A2018 100%)`,
                 position: 'relative',
                 overflow: 'hidden',
             }}
         >
-            {/* Subtle warm background radials */}
+            {/* Railway track pattern */}
             <div style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundImage: 'radial-gradient(circle at 15% 50%, rgba(107,66,38,0.05) 0%, transparent 55%), radial-gradient(circle at 85% 20%, rgba(184,134,11,0.06) 0%, transparent 55%)',
+                position: 'absolute', inset: 0,
+                backgroundImage: `
+                    linear-gradient(180deg, transparent 48%, rgba(184, 115, 51, 0.03) 48%, rgba(184, 115, 51, 0.03) 52%, transparent 52%)
+                `,
+                backgroundSize: '100% 60px',
                 pointerEvents: 'none',
             }} />
 
@@ -50,36 +62,53 @@ export default function ReviewsSection() {
                 margin: '0 auto',
                 padding: isMobile ? '0 16px' : '0 24px',
                 position: 'relative',
+                zIndex: 1,
             }}>
                 {/* Header */}
                 <div style={{ textAlign: 'center', marginBottom: isMobile ? '40px' : '60px' }}>
                     <div style={{
-                        fontSize: '12px',
-                        fontWeight: 700,
-                        letterSpacing: '3px',
-                        textTransform: 'uppercase',
-                        color: '#B8860B',
-                        marginBottom: '10px',
+                        display: 'inline-flex', alignItems: 'center', gap: '8px',
+                        background: 'rgba(212, 175, 55, 0.1)',
+                        borderRadius: '40px', padding: '5px 16px', marginBottom: '16px',
                     }}>
-                        Testimonials
+                        <span style={{ fontSize: '18px' }}>⭐</span>
+                        <span style={{
+                            fontSize: '11px', fontWeight: 700, letterSpacing: '3px',
+                            color: GOLD, textTransform: 'uppercase',
+                        }}>
+                            समीक्षा
+                        </span>
                     </div>
+
                     <h2 style={{
+                        fontFamily: 'Playfair Display, Georgia, serif',
                         fontSize: isMobile ? '1.8rem' : '2.6rem',
                         fontWeight: 800,
-                        color: '#6B4226',
+                        color: TEXT,
                         margin: '0 0 8px',
                         lineHeight: 1.2,
-                        fontFamily: 'inherit',
                     }}>
                         What Our{' '}
-                        <span style={{ color: '#B8860B' }}>Guests Say</span>
+                        <span style={{ color: GOLD }}>Guests Say</span>
                     </h2>
+
+                    <h3 style={{
+                        fontFamily: 'Noto Sans Devanagari, serif',
+                        fontSize: isMobile ? '1.2rem' : '1.5rem',
+                        fontWeight: 600,
+                        color: COPPER_LIGHT,
+                        marginBottom: '16px',
+                    }}>
+                        हमारे मेहमान क्या कहते हैं
+                    </h3>
+
+                    {/* Railway divider */}
                     <div style={{
-                        width: '60px',
-                        height: '3px',
-                        background: 'linear-gradient(90deg, #B8860B, #6B4226)',
-                        borderRadius: '2px',
-                        margin: '16px auto 28px',
+                        width: '80px', height: '4px',
+                        background: `repeating-linear-gradient(90deg, #4A4A4A 0px, #4A4A4A 15px, transparent 15px, transparent 20px)`,
+                        borderTop: `1px solid ${GOLD}`,
+                        borderBottom: `1px solid ${GOLD}`,
+                        margin: '0 auto 28px',
                     }} />
 
                     {/* Rating Badge */}
@@ -87,19 +116,19 @@ export default function ReviewsSection() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '20px',
-                        background: '#fff',
-                        border: '1.5px solid rgba(107,66,38,0.2)',
-                        borderRadius: '14px',
+                        background: `linear-gradient(135deg, ${CREAM} 0%, #FFF8DC 100%)`,
+                        border: `2px solid ${GOLD}`,
+                        borderRadius: '16px',
                         padding: isMobile ? '16px 20px' : '20px 32px',
                         flexWrap: 'wrap',
                         justifyContent: 'center',
-                        boxShadow: '0 4px 20px rgba(107,66,38,0.08)',
+                        boxShadow: `0 8px 32px rgba(184,115,51,0.3)`,
                     }}>
                         <div style={{ textAlign: 'center' }}>
                             <div style={{
-                                fontFamily: 'Bebas Neue, Impact, sans-serif',
+                                fontFamily: 'Playfair Display, serif',
                                 fontSize: isMobile ? '44px' : '56px',
-                                color: '#B8860B',
+                                color: BURGUNDY,
                                 lineHeight: 1,
                                 fontWeight: 700,
                             }}>
@@ -107,24 +136,30 @@ export default function ReviewsSection() {
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'center', gap: '3px', marginTop: '4px' }}>
                                 {[1, 2, 3, 4, 5].map(i => (
-                                    <IconStar key={i} size={18} color="#ffd700" />
+                                    <IconStar key={i} size={18} color={GOLD} />
                                 ))}
                             </div>
                         </div>
 
-                        <div style={{ width: '1px', height: '52px', background: 'rgba(107,66,38,0.15)', flexShrink: 0, display: isMobile ? 'none' : 'block' }} />
+                        <div style={{
+                            width: '1px',
+                            height: '52px',
+                            background: COPPER,
+                            flexShrink: 0,
+                            display: isMobile ? 'none' : 'block'
+                        }} />
 
                         <div style={{ textAlign: 'left' }}>
                             <div style={{
-                                color: '#6B4226',
+                                color: TEXT_DARK,
                                 fontSize: isMobile ? '16px' : '18px',
                                 fontWeight: 700,
                                 marginBottom: '2px',
                             }}>
-                                40+ Happy Guests
+                                43+ Happy Guests
                             </div>
                             <div style={{
-                                color: '#a07850',
+                                color: '#7A6455',
                                 fontSize: '13px',
                                 marginBottom: '8px',
                             }}>
@@ -138,13 +173,13 @@ export default function ReviewsSection() {
                                     display: 'inline-flex',
                                     alignItems: 'center',
                                     gap: '5px',
-                                    color: '#B8860B',
+                                    color: BURGUNDY,
                                     fontSize: '13px',
-                                    fontWeight: 600,
+                                    fontWeight: 700,
                                     textDecoration: 'none',
                                 }}
                             >
-                                View all reviews <IconExternalLink size={12} color="#B8860B" />
+                                View all reviews <IconExternalLink size={12} color={BURGUNDY} />
                             </a>
                         </div>
                     </div>
@@ -160,36 +195,44 @@ export default function ReviewsSection() {
                         <div
                             key={r.name}
                             style={{
-                                background: '#fff',
-                                border: '1.5px solid rgba(107,66,38,0.14)',
+                                background: `linear-gradient(135deg, ${CREAM} 0%, #FFF8DC 100%)`,
+                                border: `2px solid ${COPPER}`,
                                 borderRadius: '16px',
-                                padding: isMobile ? '22px 18px' : '30px',
+                                padding: isMobile ? '22px 18px' : '28px',
                                 transition: 'all 0.3s ease',
-                                boxShadow: '0 2px 12px rgba(107,66,38,0.06)',
+                                boxShadow: `0 4px 20px rgba(184,115,51,0.2)`,
                                 position: 'relative',
                                 overflow: 'hidden',
                                 animation: 'reveal-up 0.6s ease both',
                                 animationDelay: `${idx * 0.1}s`,
                             }}
                             onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = 'rgba(184,134,11,0.4)';
+                                e.currentTarget.style.borderColor = GOLD;
                                 e.currentTarget.style.transform = 'translateY(-5px)';
-                                e.currentTarget.style.boxShadow = '0 16px 40px rgba(107,66,38,0.14)';
+                                e.currentTarget.style.boxShadow = `0 12px 40px rgba(212,175,55,0.3)`;
                             }}
                             onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = 'rgba(107,66,38,0.14)';
+                                e.currentTarget.style.borderColor = COPPER;
                                 e.currentTarget.style.transform = 'translateY(0)';
-                                e.currentTarget.style.boxShadow = '0 2px 12px rgba(107,66,38,0.06)';
+                                e.currentTarget.style.boxShadow = `0 4px 20px rgba(184,115,51,0.2)`;
                             }}
                         >
+                            {/* Railway card top accent */}
+                            <div style={{
+                                position: 'absolute', top: 0, left: 0, right: 0,
+                                height: '3px',
+                                background: `linear-gradient(90deg, ${GOLD}, ${COPPER_LIGHT}, ${GOLD})`,
+                            }} />
+
                             {/* Decorative large quote mark */}
                             <div style={{
                                 position: 'absolute', top: '8px', right: '14px',
                                 fontSize: '80px', lineHeight: 1,
                                 fontFamily: 'Georgia, serif', fontWeight: 700,
-                                color: 'rgba(184,134,11,0.07)',
+                                color: 'rgba(184,115,51,0.1)',
                                 pointerEvents: 'none', userSelect: 'none',
                             }}>&ldquo;</div>
+
                             {/* Card header: avatar + name + date */}
                             <div style={{
                                 display: 'flex',
@@ -201,34 +244,33 @@ export default function ReviewsSection() {
                                     width: '44px',
                                     height: '44px',
                                     borderRadius: '50%',
-                                    background: `${r.color}22`,
-                                    border: `2px solid ${r.color}55`,
+                                    background: `linear-gradient(135deg, ${BURGUNDY}, ${COPPER})`,
+                                    border: `2px solid ${GOLD}`,
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    color: r.color,
+                                    color: CREAM,
                                     fontWeight: 700,
                                     fontSize: '14px',
                                     flexShrink: 0,
-                                    fontFamily: 'Inter, sans-serif',
                                 }}>
                                     {r.initials}
                                 </div>
                                 <div style={{ flex: 1 }}>
                                     <div style={{
-                                        color: '#6B4226',
+                                        color: TEXT_DARK,
                                         fontWeight: 700,
                                         fontSize: '14px',
                                         marginBottom: '1px',
                                     }}>
                                         {r.name}
                                     </div>
-                                    <div style={{ color: '#a07850', fontSize: '12px' }}>
+                                    <div style={{ color: '#7A6455', fontSize: '12px' }}>
                                         {r.date}
                                     </div>
                                 </div>
                                 <div style={{
-                                    color: '#B8860B',
+                                    color: BURGUNDY,
                                     fontSize: '10px',
                                     fontWeight: 700,
                                     letterSpacing: '0.5px',
@@ -246,7 +288,7 @@ export default function ReviewsSection() {
 
                             {/* Review text */}
                             <p style={{
-                                color: '#7a5c44',
+                                color: '#7A6455',
                                 fontSize: '14px',
                                 lineHeight: 1.75,
                                 margin: 0,
@@ -263,19 +305,33 @@ export default function ReviewsSection() {
                         href="https://maps.app.goo.gl/wQYhVyAeEyjnFeVX7"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn-primary"
                         style={{
-                            background: 'linear-gradient(135deg, #B8860B 0%, #D4A039 50%, #B8860B 100%)',
-                            backgroundSize: '200% auto',
-                            animation: 'shimmer 3s linear infinite',
-                            borderRadius: '10px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            background: `linear-gradient(135deg, ${BURGUNDY} 0%, ${COPPER} 100%)`,
+                            color: CREAM,
+                            border: `2px solid ${GOLD}`,
                             padding: isMobile ? '14px 28px' : '15px 36px',
-                            boxShadow: '0 6px 24px rgba(184,134,11,0.35)',
+                            borderRadius: '10px',
+                            fontWeight: 700,
+                            fontSize: '15px',
+                            textDecoration: 'none',
+                            boxShadow: `0 6px 24px rgba(184,115,51,0.3)`,
+                            transition: 'all 0.3s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.boxShadow = `0 10px 36px rgba(212,175,55,0.4)`;
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = `0 6px 24px rgba(184,115,51,0.3)`;
                         }}
                     >
-                        <IconStar size={16} color="#fff" />
+                        <IconStar size={16} color={CREAM} />
                         <span>Read All Reviews on Google</span>
-                        <IconExternalLink size={16} color="#fff" />
+                        <IconExternalLink size={16} color={CREAM} />
                     </a>
                 </div>
             </div>

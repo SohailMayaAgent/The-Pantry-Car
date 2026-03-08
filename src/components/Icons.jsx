@@ -41,7 +41,19 @@ export const IconLeaf = (p) => <Icon {...p}><path d="M11 20A7 7 0 0 1 9.8 6.1C15
 
 // ─── Hospitality ───────────────────────────────────────────────────────────────
 export const IconGlassWater = (p) => <Icon {...p}><path d="M15.5 2H8.7L4 22h16L15.5 2z" /><path d="M4.2 12h15.6" /></Icon>;
-export const IconStar = (p) => <Icon {...p} fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></Icon>;
+export const IconStar = ({ size = 20, color = 'currentColor', style, className }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size} height={size}
+        viewBox="0 0 24 24"
+        fill={color}
+        stroke="none"
+        style={style}
+        className={className}
+    >
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+);
 export const IconStarOutline = (p) => <Icon {...p}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></Icon>;
 export const IconCalendar = (p) => <Icon {...p}><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></Icon>;
 export const IconClock = (p) => <Icon {...p}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></Icon>;
@@ -100,6 +112,9 @@ export const IconNonVegDot = ({ size = 14 }) => (
 
 // ─── Transport ─────────────────────────────────────────────────────────────────
 export const IconTrain = (p) => <Icon {...p}><path d="M4 15.5C4 18.5 6 20 8 20h8c2 0 4-1.5 4-4.5V6c0-2.2-3.6-4-8-4S4 3.8 4 6v9.5z" /><path d="M4 10h16" /><circle cx="8" cy="15" r="1" /><circle cx="16" cy="15" r="1" /><path d="M6 20l-2 2" /><path d="M18 20l2 2" /></Icon>;
+
+// ─── Chef / Kitchen ─────────────────────────────────────────────────────────────
+export const IconChefHat = (p) => <Icon {...p}><path d="M6 13v8M18 13v8M2 21h20M4 13l4-9c0-2.2 1.8-4 4-4s4 1.8 4 4l4 9" /><path d="M8 13h8" /></Icon>;
 
 // ─── Emotions ──────────────────────────────────────────────────────────────────
 export const IconHeart = (p) => <Icon {...p}><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></Icon>;
